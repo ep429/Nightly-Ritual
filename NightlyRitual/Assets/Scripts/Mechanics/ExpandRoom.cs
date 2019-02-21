@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExpandRoom : MonoBehaviour
 {
-    public GameObject otherRoom;
+    public GameObject[] otherRoom;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +21,12 @@ public class ExpandRoom : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            if(otherRoom.transform.localScale.x < 10)
+            for (int i = 0; i < otherRoom.Length; i++)
             {
-                StartCoroutine(waitToExpand());
+                if (otherRoom[i].transform.localScale.x < .06)
+                {
+                    StartCoroutine(waitToExpand());
+                }
             }
         }
     }
@@ -31,6 +34,18 @@ public class ExpandRoom : MonoBehaviour
     IEnumerator waitToExpand()
     {
         yield return new WaitForSeconds(.5f);
-        otherRoom.transform.localScale += new Vector3(1, 0, 1);
+        for(int i = 0; i < otherRoom.Length;i++)
+        {
+            if(otherRoom[i].tag == "Hallway")
+            {
+                otherRoom[i].transform.localScale += new Vector3(0, 0, .005f);
+            }
+            else
+            {
+                otherRoom[i].transform.localScale += new Vector3(.005f, 0, .005f);
+            }
+
+        }
+
     }
 }

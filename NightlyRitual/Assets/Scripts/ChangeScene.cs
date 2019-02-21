@@ -16,7 +16,7 @@ public class ChangeScene : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "ControllerTest")
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Level1")
         {
             SceneManager.LoadScene("MainMenu");
         }
@@ -34,7 +34,7 @@ public class ChangeScene : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("ControllerTest");
+        SceneManager.LoadScene("Level1");
     }
 
     public void ExitGame()
