@@ -19,7 +19,10 @@ public class PlayerAction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && inRange)
         {
-            Destroy(collectable.transform.parent.gameObject);
+            collectable.SetActive(false);
+            collectable.transform.parent.GetChild(1).gameObject.SetActive(true);
+            collectable.transform.parent.GetComponent<ItemAppear>().fakeOn = false;
+            collectable.transform.parent.GetComponent<ItemAppear>().realOn = true;
             pressE.SetActive(false);
             collectManager.currentCount += 1;
             inRange = false;

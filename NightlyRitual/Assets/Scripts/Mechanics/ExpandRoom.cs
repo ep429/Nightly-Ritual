@@ -21,7 +21,10 @@ public class ExpandRoom : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            StartCoroutine(waitToExpand());
+            if(otherRoom.transform.localScale.x < 10)
+            {
+                StartCoroutine(waitToExpand());
+            }
         }
     }
 
